@@ -19,5 +19,5 @@
 
 ## Links
 
-- **Source Code**: [Github Repository](https://github.com/sam4web/shopswift-backend)
+- **Source Code**: [Github Repository](https://github.com/sam4web/shopswift-django)
 - **Live Preview**: [Shopswift Live](#)
