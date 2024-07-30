@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'styles/main.min.css' %}" />
+  <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/png">
+  <title>{% block title %}{% endblock title %} | ShopSwift</title>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body x-data="{ darkMode: localStorage.getItem('dark') === 'true'}"
+  x-init="$watch('darkMode', val => localStorage.setItem('dark', val))" x-bind:class="{ 'dark': darkMode }">
+  <div class="flex flex-col w-full h-screen">
+    {% include 'components/header.html' %}
+
+    <main class="transition-all dark:bg-body-dark py-1 flex-1">
+      {% block content %} {% endblock content %}
+    </main>
+
+    {% include 'components/footer.html' %}
+  </div>
+</body>
+
+</html>

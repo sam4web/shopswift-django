@@ -1,11 +1,15 @@
 __pycache__
 db.sqlite3
 media
-dist
 
+env/ 
+*.env
+*.local
+
+node_modules/
+
+migrations
+
+# Editor directories and files
+.vscode/
 .idea
-.vscode
-
-
-env
-.env
