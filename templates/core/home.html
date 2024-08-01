@@ -1,8 +1,67 @@
-{% extends 'base.html' %}
+{% extends 'layout/main.layout.html' %}
 {% load static %}
-{% block title %} Welcome {% endblock title %}
 
-{% block content %}
+{% block title %} ShopSwift | Explore Shop Thrive {% endblock title %}
 
-<h1 class="text-xl">Welcome To ShopSwift</h1>
-{% endblock content %}
+{% block main %}
+<section>
+  <div class="wrapper">
+    <div class="grid gap-8 md:grid-cols-2 items-center">
+      <div class="space-y-5 md:space-y-3 lg:space-y-5 w-full max-w-md md:max-w-lg">
+        <h1 class="text-3xl lg:text-[42px] text-gray font-extrabold lg:leading-[1.17] dark:text-light transition">
+          Explore. Shop. Thrive. Elevating your lifestyle online.
+        </h1>
+        <p class="font-normal text-base lg:text-lg dark:text-light pb-3">
+          SwiftShop, a clean and functional e-commerce website built with Django, highlighting essential web development
+          techniques.
+        </p>
+
+        <a href="#">
+          <button class="btn-primary mt-3">View Products</button>
+        </a>
+      </div>
+
+      <div class="flex justify-end">
+        <img class="rounded-lg shadow-2xl" src="{% static 'images/hero-image.jpg' %}" alt="hero-image" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light dark:bg-primary-dark transition py-1">
+  <div class="wrapper">
+    <h3 class="text-3xl dark:text-light text-body-dark font-medium transition">
+      Feature Products
+    </h3>
+    <hr class="line-break" />
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6 mt-14"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrapper">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-11 lg:gap-16">
+      <div class="space-y-3">
+        <h3 class="text-3xl dark:text-light text-secondary-dark font-medium transition">
+          Join our newsletter for 20% off
+        </h3>
+        <p class="font-normal text-base text-gray dark:text-light">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto
+          nostrum molestias hic consectetur corrupti asperiores cupiditate
+        </p>
+      </div>
+      <div class="flex lg:justify-end items-center">
+        <div
+          class="bg-light dark:bg-gray-dark p-1.5 rounded-lg flex justify-between flex-wrap lg:flex-1 gap-3 sm:max-w-sm">
+          <input type="text" placeholder="Enter email..."
+            class="px-3 outline-none bg-transparent inline-block dark:text-light" />
+          <button class="text-lg text-light bg-primary px-3 py-2 rounded-md border-primary transition">
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock main %}

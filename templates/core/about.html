@@ -1,0 +1,82 @@
+{% extends 'layout/main.layout.html' %} 
+{% load static %} 
+
+{% block title %} About Us | ShopSwift {% endblock title %} 
+
+{% block main %}
+<section>
+  <div class="wrapper">
+    <div class="grid items-center gap-10 lg:gap-14 md:grid-cols-2">
+      <div class="flex">
+        <img
+          class="rounded-lg shadow-2xl"
+          src="{% static 'images/about-image.jpg' %}"
+          alt="about-image"
+        />
+      </div>
+
+      <div class="space-y-3 lg:space-y-5 w-full max-w-md md:max-w-lg">
+        <h1
+          class="text-3xl lg:text-5xl transition dark:text-light text-secondary-dark font-extrabold mb-4"
+        >
+          About Us
+        </h1>
+        <div class="font-normal text-base lg:text-lg dark:text-light space-y-3">
+          <p>
+            Welcome to SwiftShop, a personal project showcasing a simple and
+            elegant e-commerce website built using Django. This project serves
+            as a learning exercise to explore web development fundamentals by
+            creating a functional online store with product listings, user
+            authentication, shopping cart, and order management.
+          </p>
+          <p>
+            Explore the
+
+            <a
+              href="https://github.com/sam4web/shopswift-django"
+              class="text-primary font-medium"
+              target="_blank"
+            >
+              source code
+            </a>
+
+            on GitHub to see the implementation details.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light dark:bg-primary-dark transition py-1">
+  <div class="wrapper">
+    <h3 class="text-3xl lg:text-4xl text-gray font-extrabold dark:text-light">
+      Our Story
+    </h3>
+    <hr class="line-break" />
+
+    <div
+      class="space-y-4 lg:space-y-7 mt-6 font-normal dark:text-light text-base lg:text-lg"
+    >
+      <p class="float-left max-w-2xl">
+        Ducimus non recusandae, voluptas itaque tempore, reprehenderit
+        laudantium amet, iure neque nostrum animi architecto nihil aperiam.
+        Voluptatibus culpa cum autem aspernatur. Veritatis, vel ullam cupiditate
+        similique quo, iste quia accusamus eligendi vero dolorem in, unde aut
+        consequatur. Magni maiores facere earum sapiente iusto alias aspernatur
+        dolor illum dicta? Tempore odio odit cum pariatur sed. Voluptatem,
+        molestias ipsum. Amet, ab.
+      </p>
+      <div class="clear-both"></div>
+
+      <p class="float-right max-w-2xl">
+        Deleniti voluptas consequatur iusto, ut expedita debitis, ratione
+        asperiores molestiae praesentium voluptates nobis dolores, fugiat nisi
+        unde nulla soluta iste. Modi cumque pariatur voluptatibus, magni maxime
+        optio dolorem ipsum distinctio sint, odit illum
+      </p>
+      <div class="clear-both"></div>
+    </div>
+  </div>
+</section>
+{% endblock main %}

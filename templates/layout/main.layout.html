@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block wrapper %}
+{% include 'components/header.html' %}
+<main class="transition-all dark:bg-body-dark py-1 flex-1">
+    {% block main %}
+    {% endblock main %}
+</main>
+{% include 'components/footer.html' %}
+{% endblock wrapper %}

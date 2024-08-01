@@ -1,3 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  * {
+    @apply m-0 p-0 box-border;
+  }
+
+  body {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .wrapper {
+    @apply max-w-7xl w-full mx-auto px-4 lg:px-12 my-6 py-3 lg:my-11 lg:py-10;
+  }
+
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .line-break {
+    @apply h-px my-4 bg-gray-200 border-0 dark:bg-gray-700;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply text-base text-light px-3 md:px-5 py-2 md:py-3 rounded-lg border-2 transition hover:text-secondary-dark  hover:bg-transparent dark:hover:text-light shadow-md;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary border-primary;
+  }
+
+  .btn-secondary {
+    @apply text-lg text-secondary-dark bg-transparent dark:text-light hover:text-light hover:bg-primary px-3 md:px-5 py-2 md:py-3 rounded-md border-primary border-2 transition;
+  }
+
+  .auth-field-wrapper label {
+    @apply input-label;
+  }
+
+  .auth-field-wrapper input {
+    @apply input-field-lg;
+  }
+
+  .field-wrapper label {
+    @apply input-label;
+  }
+
+  .field-wrapper input,
+  .field-wrapper select,
+  .field-wrapper textarea {
+    @apply input-field-lg;
+  }
+
+  .field-wrapper textarea {
+    @apply h-44;
+  }
+
+  .field-wrapper select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .input-field {
+    @apply w-full border-2 border-gray-200 outline-none transition dark:border-transparent rounded-md dark:text-light;
+  }
+  .input-field-sm {
+    @apply input-field px-2 py-1 dark:bg-body-dark;
+  }
+
+  .input-field-lg {
+    @apply input-field px-4 py-3 dark:bg-primary-dark;
+  }
+
+  .input-label {
+    @apply mb-1 inline-block text-gray-dark text-base dark:text-white transition;
+  }
+
+  .auth-input-field {
+    @apply w-full border-2 border-gray-200 outline-none px-4 py-3 rounded-md;
+  }
+
+  .auth-input-label {
+    @apply mb-1 inline-block text-gray-dark text-base;
+  }
+
+  .nav-link {
+    @apply text-secondary-dark dark:text-light font-normal text-base md:text-sm dark:hover:bg-slate-700 hover:bg-slate-300 hover:shadow-sm px-3 py-2 rounded-md w-full cursor-pointer transition capitalize;
+  }
+
+  .nav-link__active {
+    @apply bg-secondary-dark text-light dark:bg-gray-dark md:bg-primary-dark hover:bg-primary-dark shadow-sm;
+  }
+}
