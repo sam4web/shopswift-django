@@ -1,0 +1,72 @@
+<form
+  method="GET"
+  id="search-form"
+  class="px-3 py-5 lg:px-5 lg:py-7 bg-light dark:bg-primary-dark transition rounded-xl space-y-3 sm:space-y-7"
+>
+  <div
+    class="md:space-y-7 grid grid-cols-1 sm:grid-cols-3 gap-3 md:block justify-between items-center"
+  >
+    <div>
+      <label for="product" class="input-label"> Search Product </label>
+      <input class="input-field-sm" type="text" name="product" id="product" />
+    </div>
+
+    <div>
+      <label for="category" class="input-label"> Select Category </label>
+      <select name="category" id="category" class="input-field-sm">
+        <option value="all" selected>All</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="sort" class="input-label"> Sort By </label>
+      <select name="sort" id="sort" class="input-field-sm">
+        <option value="low">Price (Lowest)</option>
+        <option value="high">Price (Highest)</option>
+        <option value="order">Name (A - Z)</option>
+        <option value="reverse">Name (Z - A)</option>
+      </select>
+    </div>
+  </div>
+
+  <div
+    class="md:space-y-7 flex-col sm:flex-row flex justify-between sm:items-center gap-3 md:block"
+  >
+    <div class="flex-1">
+      <label for="min" class="input-label"> Price Range </label>
+      <div class="flex gap-3 items-center">
+        <input
+          class="input-field-sm"
+          type="number"
+          name="min"
+          id="min"
+          placeholder="Min"
+          min="0"
+        />
+        <input
+          class="input-field-sm"
+          type="number"
+          name="max"
+          id="max"
+          placeholder="Max"
+          min="0"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="flex gap-2.5">
+    <button
+      type="submit"
+      class="w-full text-base text-light bg-primary px-3 py-2 rounded-md border-primary transition shadow-md"
+    >
+      Submit
+    </button>
+    <button
+      type="reset"
+      class="w-full text-base text-light bg-red-500 px-3 py-2 rounded-md border-primary transition shadow-md"
+    >
+      Reset
+    </button>
+  </div>
+</form>

@@ -15,3 +15,7 @@ def login_view(request):
 
 def register_view(request):
     return render(request, "user/register.html")
+
+
+def product_list(request):
+    return render(request, "products/list.html")
