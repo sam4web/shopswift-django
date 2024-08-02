@@ -1,44 +1,49 @@
-{% extends 'layout/auth.layout.html' %}
-{% load static %}
+{% extends 'layout/auth.layout.html' %} 
+{% load static %} 
 
-{% block title %} Create Account | ShopSwift {% endblock title %}
+{% block title %} Create Account | ShopSwift {% endblock title %} 
 
 {% block main %}
 <section class="w-full h-full flex justify-center items-center px-3">
-    <form method="POST"
-        class="max-w-lg w-full shadow-md rounded-xl px-4 sm:px-5 py-7 md:p-8 space-y-6 bg-light dark:bg-primary-dark">
-        <h2 class="text-4xl text-secondary-dark font-medium transition text-center dark:text-light">
-            Register
-        </h2>
+  <form
+    action="."
+    method="POST"
+    class="max-w-lg w-full shadow-md rounded-xl px-4 sm:px-5 py-7 md:p-8 space-y-6 bg-light dark:bg-primary-dark"
+  >
+    {% csrf_token %}
+    <h2
+      class="text-4xl text-secondary-dark font-medium transition text-center dark:text-light"
+    >
+      Register
+    </h2>
 
-        <div class="space-y-4 md:space-y-6">
-            <div class="auth-field-wrapper">
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" />
-            </div>
+    {% if form.errors %}
+    <ul class="bg-red-500 px-4 py-2 rounded-md shadow-md">
+      {% for field in form %} 
+        {% for error in field.errors %}
+            <li class="text-white">{{ error|escape }}</li>
+        {% endfor %} 
+      {% endfor %}
+    </ul>
+    {% endif %}
 
-            <div class="auth-field-wrapper">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" />
-            </div>
+    <div class="space-y-4 md:space-y-6">
+      {% for field in form %}
+      <div class="auth-field-wrapper">
+        <span class="capitalize"> {{ field.label_tag }} </span>
+        {{ field }}
+      </div>
+      {% endfor %}
+    </div>
 
-            <div class="auth-field-wrapper">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" />
-            </div>
+    <button type="submit" class="btn-primary w-full">Register</button>
 
-            <div class="auth-field-wrapper">
-                <label for="password2">Confirm Password</label>
-                <input type="password2" name="password2" id="password2" />
-            </div>
-        </div>
-
-        <button type="submit" class="btn-primary w-full">Register</button>
-
-        <p class="text-center text-secondary-dark dark:text-light">
-            Already a member?
-            <a href="{% url 'user:login' %}" class="text-primary font-medium"> Login </a>
-        </p>
-    </form>
+    <p class="text-center text-secondary-dark dark:text-light">
+      Already a member?
+      <a href="{% url 'user:login' %}" class="text-primary font-medium">
+        Login
+      </a>
+    </p>
+  </form>
 </section>
 {% endblock main %}
