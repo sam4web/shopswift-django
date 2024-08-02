@@ -6,10 +6,10 @@
       <ul class="text-light text-sm md:text-[16px] font-light">
         <div class="flex justify-center items-center sm:justify-end space-x-6">
           <li>
-            <a href="{% url 'core:login' %}" class="hover:underline">Sign in</a>
+            <a href="{% url 'user:login' %}" class="hover:underline">Sign in</a>
           </li>
           <li>
-            <a href="{% url 'core:register' %}" class="hover:underline">
+            <a href="{% url 'user:register' %}" class="hover:underline">
               Create Account
             </a>
           </li>
@@ -52,7 +52,7 @@
           <li>
             <a
               class="nav-link {% if url_name == 'product_list' %}nav-link__active{% endif %}"
-              href="{% url 'core:product_list' %}"
+              href="{% url 'products:list' %}"
             >
               products
             </a>
