@@ -3,17 +3,30 @@
 <header class="dark:bg-body-dark transition" x-data="{showSidenav: false}">
   <nav class="bg-secondary-dark dark:bg-gray-dark transition">
     <div class="max-w-7xl w-full mx-auto px-4 lg:px-10 py-1.5">
-      <ul class="text-light text-sm md:text-[16px] font-light">
-        <div class="flex justify-center items-center sm:justify-end space-x-6">
-          <li>
-            <a href="{% url 'user:login' %}" class="hover:underline">Sign in</a>
-          </li>
-          <li>
-            <a href="{% url 'user:register' %}" class="hover:underline">
-              Create Account
-            </a>
-          </li>
-        </div>
+      <ul
+        class="text-light text-sm md:text-[16px] font-light flex justify-center items-center sm:justify-end space-x-6"
+      >
+        {% if request.user.is_authenticated %}
+        <li>Hello, {{ request.user }}</li>
+        <li>
+          <a href="{% url 'user:logout' %}">
+            <button
+              class="text-sm text-light px-3 py-1 rounded-md border-primary border-2 transition"
+            >
+              Logout
+            </button>
+          </a>
+        </li>
+        {% else %}
+        <li>
+          <a href="{% url 'user:login' %}" class="hover:underline">Sign in</a>
+        </li>
+        <li>
+          <a href="{% url 'user:register' %}" class="hover:underline">
+            Create Account
+          </a>
+        </li>
+        {% endif %}
       </ul>
     </div>
   </nav>
@@ -51,7 +64,7 @@
           </li>
           <li>
             <a
-              class="nav-link {% if url_name == 'product_list' %}nav-link__active{% endif %}"
+              class="nav-link {% if url_name == 'list' %}nav-link__active{% endif %}"
               href="{% url 'products:list' %}"
             >
               products
@@ -65,6 +78,24 @@
               cart
             </a>
           </li>
+          {% if request.user.is_authenticated %}
+          <li>
+            <a
+              class="nav-link {% if url_name == 'cart' %}nav-link__active{% endif %}"
+              href="#"
+            >
+              checkout
+            </a>
+          </li>
+          <li>
+            <a
+              class="nav-link {% if url_name == 'cart' %}nav-link__active{% endif %}"
+              href="#"
+            >
+              orders
+            </a>
+          </li>
+          {% endif %}
         </ul>
         {% endwith %}
         <!-- navbar links -->
@@ -106,7 +137,7 @@
             </svg>
           </a>
 
-          <a href="/profile">
+          <a href="{% url 'user:profile' %}">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -130,25 +161,63 @@
 
   <template x-if="showSidenav">
     <nav
-      class="bg-light dark:bg-primary-dark mt-2 max-w-[240px] ml-8 p-2 rounded-md md:hidden transition"
+      class="bg-light dark:bg-primary-dark mt-2 max-w-[240px] ml-5 p-2 rounded-lg shadow-md md:hidden transition"
     >
-      <ul class="space-y-2.5">
+      <ul class="space-y-1.5">
+        {% with request.resolver_match.url_name as url_name %}
         <li>
-          <a class="nav-link" href="/"> home </a>
+          <a
+            class="nav-link {% if url_name == 'index' %}nav-link__active{% endif %}"
+            href="{% url 'core:index' %}"
+          >
+            home
+          </a>
         </li>
 
         <li>
-          <a class="nav-link" href="/about"> about </a>
+          <a
+            class="nav-link {% if url_name == 'about' %}nav-link__active{% endif %}"
+            href="{% url 'core:about' %}"
+          >
+            about
+          </a>
         </li>
-
         <li>
-          <a class="nav-link" href="/products"> products </a>
+          <a
+            class="nav-link {% if url_name == 'list' %}nav-link__active{% endif %}"
+            href="{% url 'products:list' %}"
+          >
+            products
+          </a>
         </li>
-
         <li>
-          <a class="nav-link" href="/cart"> cart </a>
+          <a
+            class="nav-link {% if url_name == 'cart' %}nav-link__active{% endif %}"
+            href="#"
+          >
+            cart
+          </a>
         </li>
+        {% if request.user.is_authenticated %}
+        <li>
+          <a
+            class="nav-link {% if url_name == 'cart' %}nav-link__active{% endif %}"
+            href="#"
+          >
+            checkout
+          </a>
+        </li>
+        <li>
+          <a
+            class="nav-link {% if url_name == 'cart' %}nav-link__active{% endif %}"
+            href="#"
+          >
+            orders
+          </a>
+        </li>
+        {% endif %}
       </ul>
+      {% endwith %}
     </nav>
   </template>
   <!-- side navbar -->

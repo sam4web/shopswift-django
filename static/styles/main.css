@@ -102,10 +102,10 @@
   }
 
   .nav-link {
-    @apply text-secondary-dark dark:text-light font-normal text-base md:text-sm dark:hover:bg-slate-800 hover:bg-slate-200 hover:shadow-sm px-3 py-2 rounded-md w-full cursor-pointer transition capitalize;
+    @apply text-secondary-dark dark:text-light font-normal text-sm dark:hover:bg-slate-800 hover:bg-slate-200 hover:shadow-sm px-2.5 py-2 rounded-md w-full cursor-pointer transition capitalize block;
   }
 
   .nav-link__active {
-    @apply bg-secondary-dark text-light dark:bg-gray-dark md:bg-primary-dark hover:bg-primary-dark shadow-sm;
+    @apply text-light dark:bg-gray-dark bg-primary-dark dark:hover:bg-gray-dark hover:bg-primary-dark shadow-sm;
   }
 }
