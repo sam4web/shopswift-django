@@ -67,13 +67,13 @@
               class="nav-link {% if url_name == 'list' %}nav-link__active{% endif %}"
               href="{% url 'product:list' %}"
             >
-              Products
+              products
             </a>
           </li>
           <li>
             <a
               class="nav-link {% if url_name == 'cart' %}nav-link__active{% endif %}"
-              href="#"
+              href="{% url 'cart:cart' %}"
             >
               cart
             </a>
@@ -81,7 +81,7 @@
           {% if request.user.is_authenticated %}
           <li>
             <a
-              class="nav-link {% if url_name == 'cart' %}nav-link__active{% endif %}"
+              class="nav-link {% if url_name == 'checkout' %}nav-link__active{% endif %}"
               href="#"
             >
               checkout
@@ -89,7 +89,7 @@
           </li>
           <li>
             <a
-              class="nav-link {% if url_name == 'cart' %}nav-link__active{% endif %}"
+              class="nav-link {% if url_name == 'orders' %}nav-link__active{% endif %}"
               href="#"
             >
               orders
@@ -120,7 +120,7 @@
         <div class="flex items-center gap-3.5">
           {% include 'components/theme-toggler.html' %}
 
-          <a href="/cart" class="relative inline-block">
+          <a href="{% url 'cart:cart' %}" class="relative inline-block">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -193,7 +193,7 @@
         <li>
           <a
             class="nav-link {% if url_name == 'cart' %}nav-link__active{% endif %}"
-            href="#"
+            href="{% url 'cart:cart' %}"
           >
             cart
           </a>
@@ -201,7 +201,7 @@
         {% if request.user.is_authenticated %}
         <li>
           <a
-            class="nav-link {% if url_name == 'cart' %}nav-link__active{% endif %}"
+            class="nav-link {% if url_name == 'checkout' %}nav-link__active{% endif %}"
             href="#"
           >
             checkout
@@ -209,7 +209,7 @@
         </li>
         <li>
           <a
-            class="nav-link {% if url_name == 'cart' %}nav-link__active{% endif %}"
+            class="nav-link {% if url_name == 'orders' %}nav-link__active{% endif %}"
             href="#"
           >
             orders

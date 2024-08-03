@@ -33,20 +33,20 @@
       <div class="space-x-2">
         <a href="#">
           <button
-            class="btn bg-emerald-500 border-emerald-500 py-1.5 px-3 font-medium"
+            class="btn bg-emerald-500 border-emerald-500 py-2 font-medium"
           >
             Edit
           </button>
         </a>
         <a href="{% url 'product:delete' product.id %}">
-          <button class="btn bg-red-500 border-red-500 py-1.5 px-3 font-medium">
+          <button class="btn bg-rose-500 border-rose-500 py-2 font-medium">
             Delete
           </button>
         </a>
       </div>
       {% else %}
-      <a href="#" class="inline-block">
-        <button class="btn-secondary py-3 font-medium" type="submit">
+      <a href="{% url 'cart:add' product.id %}" class="inline-block">
+        <button class="btn-secondary py-3 font-medium">
           Add to Cart
         </button>
       </a>
