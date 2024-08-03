@@ -1,18 +1,20 @@
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
 from django.shortcuts import render, redirect
 
 from .forms import ProductForm
-from .models import Product
+from .models import Product, CATEGORIES
+from .utils import filtered_products
 
 
 def list_view(request):
-    products = Product.objects.order_by("-updated_at")
-    context = {"products": products}
-    return render(request, "product/list.html", context=context)
+    products, url_query = filtered_products(request)
+    context = {"products": products, "categories": CATEGORIES, "url_query": url_query}
+    return render(request, "product/list.html", context)
 
 
-def detail_view(request, id):
-    product = Product.objects.get(id=id)
+def detail_view(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
     context = {"product": product}
     return render(request, "product/detail.html", context=context)
 
@@ -31,3 +33,10 @@ def create_view(request):
 
     context = {"form": form}
     return render(request, "product/create.html", context=context)
+
+
+@login_required
+def delete_view(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    product.delete()
+    return redirect("product:list")

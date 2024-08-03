@@ -1,69 +1,58 @@
-<form
-  method="GET"
-  id="search-form"
-  class="px-3 py-5 lg:px-5 lg:py-7 bg-light dark:bg-primary-dark transition rounded-xl space-y-3 sm:space-y-7"
->
-  <div
-    class="md:space-y-7 grid grid-cols-1 sm:grid-cols-3 gap-3 md:block justify-between items-center"
-  >
+<form method="GET" id="search-form"
+  class="px-3 py-5 lg:px-5 lg:py-7 bg-light dark:bg-primary-dark transition rounded-xl space-y-3 sm:space-y-7">
+  <div class="md:space-y-7 grid grid-cols-1 sm:grid-cols-3 gap-3 md:block justify-between items-center">
     <div>
-      <label for="product" class="input-label"> Search Product </label>
-      <input class="input-field-sm" type="text" name="product" id="product" />
+      <label for="name" class="input-label"> Search Product </label>
+      <input class="input-field-sm" type="text" name="name" id="name" value="{{ url_query.name }}" />
     </div>
 
     <div>
       <label for="category" class="input-label"> Select Category </label>
       <select name="category" id="category" class="input-field-sm">
-        <option value="all" selected>All</option>
+        <option value=0 selected>All</option>
+        {% for category in categories %}
+        <option value={{category.0}} {% if category.0 == url_query.category %}selected{% endif %}>
+          {{ category.1 }}
+        </option>
+        {% endfor %}
       </select>
     </div>
 
     <div>
       <label for="sort" class="input-label"> Sort By </label>
       <select name="sort" id="sort" class="input-field-sm">
-        <option value="low">Price (Lowest)</option>
-        <option value="high">Price (Highest)</option>
-        <option value="order">Name (A - Z)</option>
-        <option value="reverse">Name (Z - A)</option>
+        <option value="low" {% if url_query.sort == 'low' %} selected {% endif %}>Price (Lowest)</option>
+        <option value="high" {% if url_query.sort == 'high' %} selected {% endif %}>Price (Highest)</option>
+        <option value="order" {% if url_query.sort == 'order' %} selected {% endif %}>Name (A - Z)</option>
+        <option value="reverse" {% if url_query.sort == 'reverse' %} selected {% endif %}>Name (Z - A)</option>
       </select>
     </div>
   </div>
 
-  <div
-    class="md:space-y-7 flex-col sm:flex-row flex justify-between sm:items-center gap-3 md:block"
-  >
+  <div class="md:space-y-7 flex-col sm:flex-row flex justify-between sm:items-center gap-3 md:block">
     <div class="flex-1">
       <label for="min" class="input-label"> Price Range </label>
       <div class="flex gap-3 items-center">
-        <input
-          class="input-field-sm"
-          type="number"
-          name="min"
-          id="min"
-          placeholder="Min"
-          min="0"
-        />
-        <input
-          class="input-field-sm"
-          type="number"
-          name="max"
-          id="max"
-          placeholder="Max"
-          min="0"
-        />
+        <input class="input-field-sm" type="number" name="min" id="min" placeholder="Min" min="0"
+          value="{{ url_query.min }}" />
+        <input class="input-field-sm" type="number" name="max" id="max" placeholder="Max" min="0"
+          value="{{ url_query.max }}" />
       </div>
     </div>
   </div>
 
   <div class="flex gap-2.5">
-    <button
-      type="submit"
-      class="btn bg-emerald-500 border-emerald-500 p-1.5 w-full"
-    >
+    <button type="submit" class="btn bg-emerald-500 border-emerald-500 p-1.5 w-full">
       Submit
     </button>
-    <button type="reset" class="btn bg-rose-500 border-rose-500 p-1.5 w-full">
+    <button type="reset" @click="refreshPageWithoutQueries" class="btn bg-rose-500 border-rose-500 p-1.5 w-full">
       Reset
     </button>
   </div>
 </form>
+
+<script>
+  function refreshPageWithoutQueries() {
+    window.location.href = window.location.origin + window.location.pathname;
+  }
+</script>

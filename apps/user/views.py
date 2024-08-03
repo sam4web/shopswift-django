@@ -3,12 +3,20 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 
+from apps.product.models import CATEGORIES
+from apps.product.utils import filtered_products
 from .forms import RegistrationForm
 
 
 @login_required
 def profile_view(request):
-    context = {"user": request.user, "products": request.user.products.all()}
+    products, url_query = filtered_products(request)
+    context = {
+        "user": request.user,
+        "products": products.filter(created_by=request.user),
+        "categories": CATEGORIES,
+        "url_query": url_query,
+    }
     return render(request, "user/profile.html", context=context)
 
 

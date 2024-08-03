@@ -1489,6 +1489,10 @@ body{
   margin-bottom: calc(2.25rem * var(--tw-space-y-reverse));
 }
 
+.whitespace-pre-line{
+  white-space: pre-line;
+}
+
 .rounded-full{
   border-radius: 9999px;
 }

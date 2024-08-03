@@ -19,10 +19,13 @@
 
     {% if form.errors %}
     <ul class="bg-rose-500 px-4 py-2 rounded-md shadow-md">
-      {% for field in form %} 
+      {% for error in form.non_field_errors %}
+        <li class="text-white">{{ error }}</li>
+      {% endfor %}
+      {% for field in form %}
         {% for error in field.errors %}
-          <li class="text-white">{{ error|escape }}</li>
-        {% endfor %} 
+          <li class="text-white">{{ error }}</li>
+        {% endfor %}
       {% endfor %}
     </ul>
     {% endif %}

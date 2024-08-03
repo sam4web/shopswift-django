@@ -23,7 +23,9 @@
         </p>
       </div>
 
-      <p class="font-normal text-base lg:text-lg dark:text-light pb-3">
+      <p
+        class="font-normal text-base lg:text-lg dark:text-light pb-3 whitespace-pre-line"
+      >
         {{ product.description }}
       </p>
 
@@ -36,7 +38,7 @@
             Edit
           </button>
         </a>
-        <a href="">
+        <a href="{% url 'product:delete' product.id %}">
           <button class="btn bg-red-500 border-red-500 py-1.5 px-3 font-medium">
             Delete
           </button>
