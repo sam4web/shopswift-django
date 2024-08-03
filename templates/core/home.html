@@ -49,7 +49,7 @@
       {% for product in products %}
       <a href="{% url 'product:detail' product.id %}">
         <div
-          class="shadow-md rounded-lg px-5 py-3 space-y-3.5 text-center bg-white dark:bg-secondary-dark transition h-full flex-between flex-col"
+          class="shadow-md rounded-xl px-5 py-3 space-y-3.5 text-center bg-white dark:bg-secondary-dark transition h-full flex-between flex-col"
         >
           <img
             src="{{ product.image.url }}"
