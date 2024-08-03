@@ -48,7 +48,7 @@
   }
 
   .btn-secondary {
-    @apply text-lg text-secondary-dark bg-transparent dark:text-light hover:text-light hover:bg-primary px-3 md:px-5 py-2 md:py-3 rounded-md border-primary border-2 transition;
+    @apply btn bg-primary-dark border-primary-dark;
   }
 
   .auth-field-wrapper label {

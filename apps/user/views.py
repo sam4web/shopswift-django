@@ -8,7 +8,8 @@ from .forms import RegistrationForm
 
 @login_required
 def profile_view(request):
-    return render(request, "user/profile.html")
+    context = {"user": request.user, "products": request.user.products.all()}
+    return render(request, "user/profile.html", context=context)
 
 
 @login_required

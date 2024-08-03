@@ -20,7 +20,7 @@
           Django, highlighting essential web development techniques.
         </p>
 
-        <a href="{% url 'products:list' %}">
+        <a href="{% url 'product:list' %}">
           <button class="btn-primary mt-3">View Products</button>
         </a>
       </div>
@@ -45,7 +45,25 @@
 
     <div
       class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6 mt-14"
-    ></div>
+    >
+      {% for product in products %}
+      <a href="{% url 'product:detail' product.id %}">
+        <div
+          class="shadow-md rounded-lg px-5 py-3 space-y-3.5 text-center bg-white dark:bg-secondary-dark transition h-full flex-between flex-col"
+        >
+          <img
+            src="{{ product.image.url }}"
+            class="rounded-md"
+            alt="{{ product.name }} image"
+          />
+          <div class="flex justify-between gap-3 w-full">
+            <h3 class="dark:text-light text-left">{{ product.name }}</h3>
+            <p class="text-primary font-medium">${{ product.price }}</p>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
   </div>
 </section>
 
@@ -72,11 +90,7 @@
             placeholder="Enter email..."
             class="px-3 outline-none bg-transparent inline-block dark:text-light"
           />
-          <button
-            class="text-lg text-light bg-primary px-3 py-2 rounded-md border-primary transition"
-          >
-            Subscribe
-          </button>
+          <button class="btn-primary px-3 py-2">Subscribe</button>
         </div>
       </div>
     </div>

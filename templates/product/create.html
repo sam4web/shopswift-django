@@ -1,9 +1,5 @@
-{% extends 'layout/main.layout.html' %} 
-{% load static %} 
-
-{% block title %} New Product | ShopSwift {% endblock title %} 
-
-{% block main %}
+{% extends 'layout/main.layout.html' %} {% load static %} {% block title %} New
+Product | ShopSwift {% endblock title %} {% block main %}
 <div class="wrapper">
   <section>
     <h3
@@ -17,25 +13,21 @@
 
   {% if form.errors %}
   <ul class="bg-red-500 px-4 py-2 rounded-md shadow-md">
-    {% for field in form %} 
-      {% for error in field.errors %}
-        <li class="text-white">{{ error|escape }}</li>
-      {% endfor %} 
-    {% endfor %}
+    {% for field in form %} {% for error in field.errors %}
+    <li class="text-white">{{ error|escape }}</li>
+    {% endfor %} {% endfor %}
   </ul>
   {% endif %}
 
   <form method="POST" enctype="multipart/form-data" class="space-y-6">
-    {% csrf_token %} 
-    
-    {% for field in form %}
+    {% csrf_token %} {% for field in form %}
     <div class="field-wrapper">
       <span class="capitalize"> {{ field.label_tag }} </span>
       {{ field }}
     </div>
     {% endfor %}
 
-    <button type="submit" class="btn-primary">Create Product</button>
+    <button type="submit" class="btn-secondary">Create Product</button>
   </form>
 </div>
 {% endblock main %}

@@ -89,9 +89,9 @@ class Product(models.Model):
     price = models.FloatField()
     description = models.TextField()
     category = models.IntegerField(choices=CATEGORIES)
-    # image = models.ImageField(upload_to=)
+    image = models.ImageField(upload_to="product/")
     created_by = models.ForeignKey(
-        User, related_name="created_by", on_delete=models.CASCADE
+        User, related_name="products", on_delete=models.CASCADE
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

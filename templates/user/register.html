@@ -18,10 +18,10 @@
     </h2>
 
     {% if form.errors %}
-    <ul class="bg-red-500 px-4 py-2 rounded-md shadow-md">
+    <ul class="bg-rose-500 px-4 py-2 rounded-md shadow-md">
       {% for field in form %} 
         {% for error in field.errors %}
-            <li class="text-white">{{ error|escape }}</li>
+          <li class="text-white">{{ error|escape }}</li>
         {% endfor %} 
       {% endfor %}
     </ul>
@@ -36,7 +36,7 @@
       {% endfor %}
     </div>
 
-    <button type="submit" class="btn-primary w-full">Register</button>
+    <button type="submit" class="btn-secondary w-full">Register</button>
 
     <p class="text-center text-secondary-dark dark:text-light">
       Already a member?

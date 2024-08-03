@@ -1,8 +1,12 @@
 from django.shortcuts import render
 
+from apps.product.models import Product
+
 
 def index_view(request):
-    return render(request, "core/home.html")
+    products = Product.objects.order_by("-updated_at")[:3]
+    context = {"products": products}
+    return render(request, "core/home.html", context=context)
 
 
 def about_view(request):
@@ -18,4 +22,4 @@ def register_view(request):
 
 
 def product_list(request):
-    return render(request, "products/list.html")
+    return render(request, "product/list.html")

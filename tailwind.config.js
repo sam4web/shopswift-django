@@ -14,7 +14,7 @@ module.exports = {
         "primary-dark": "#2b2d42",
         "body-dark": "#242938",
         gray: { DEFAULT: "#394E6A", dark: "#414558" },
-        light: "#f0fcfb",
+        light: "#f7f7fa",
       },
     },
     fontFamily: {

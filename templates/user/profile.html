@@ -1,7 +1,103 @@
-{% extends 'layout/main.layout.html' %}
-{% load static %}
+{% extends 'layout/main.layout.html' %} 
+{% load static %} 
 
-{% block title %} Profile | ShopSwift {% endblock title %}
+{% block title %} {{ user.username }} | ShopSwift {% endblock title %} 
 
 {% block main %}
+<div class="wrapper">
+  <div
+    class="md:grid grid-cols-3 items-start space-y-6 md:space-y-0 space-x-0 md:space-x-6"
+  >
+    <aside class="col-span-1 space-y-5">
+      <div
+        class="px-3 py-5 lg:px-5 lg:py-7 bg-light dark:bg-primary-dark transition rounded-xl"
+      >
+        <div class="space-y-1 mb-4">
+          <h3 class="text-2xl dark:text-light text-gray font-medium transition">
+            {{ user.username }}
+          </h3>
+          <p class="text-gray-dark text-base dark:text-white transition">
+            {{ user.email }}
+          </p>
+          <p class="text-gray text-base dark:text-white transition">
+            Member Since: {{ user.date_joined|date:"M d, Y" }}
+          </p>
+        </div>
+
+        <a href="{% url 'user:logout' %}">
+          <button
+            class="btn bg-transparent border-rose-500 text-primary-dark py-2 px-4"
+          >
+            Logout
+          </button>
+        </a>
+      </div>
+
+      {% include 'components/search-form.html' %}
+
+      <div>
+        <a href="{% url 'product:create' %}">
+          <button class="btn-secondary w-full">Create Product</button>
+        </a>
+      </div>
+    </aside>
+
+    <section class="col-span-2">
+      <div class="flex justify-between flex-wrap items-center gap-x-4">
+        <h3
+          class="text-2xl lg:text-3xl dark:text-light text-gray font-medium transition"
+        >
+          My Products
+        </h3>
+        <p class="text-lg text-gray dark:text-light">
+          Total products: {{ products|length }}
+        </p>
+      </div>
+      <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700" />
+
+      <div class="space-y-6">
+        {% for product in products %}
+        <div
+          class="shadow-md rounded-lg p-3.5 space-y-5 lg:space-y-0 lg:space-x-7 text-center bg-light dark:bg-primary-dark flex-col lg:flex-row flex transition"
+        >
+          <img
+            src="{{ product.image.url }}"
+            class="rounded-md lg:w-2/5"
+            alt="{{ product.name }} image"
+          />
+          <div class="flex-1 flex flex-col items-end justify-between space-y-5">
+            <div class="space-y-2 text-left w-full">
+              <div class="flex justify-between">
+                <h3 class="text-xl dark:text-light">{{ product.name }}</h3>
+                <p class="text-primary font-medium">${{ product.price }}</p>
+              </div>
+              <p class="text-gray dark:text-light">{{ product.description }}</p>
+            </div>
+            <div class="flex space-x-2.5">
+              <a
+                href="{% url 'product:detail' product.id %}"
+                class="inline-block"
+              >
+                <button class="btn-secondary px-3 py-1.5">Detail</button>
+              </a>
+              <a href="#" class="inline-block">
+                <button
+                  class="btn bg-emerald-500 border-emerald-500 px-3 py-1.5"
+                >
+                  Edit
+                </button>
+              </a>
+              <a href="#" class="inline-block">
+                <button class="btn bg-red-500 border-red-500 px-3 py-1.5">
+                  Delete
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+</div>
 {% endblock main %}
