@@ -6,4 +6,5 @@ app_name = "products"
 
 urlpatterns = [
     path("", list_view, name="list"),
+    path("create/", create_view, name="create"),
 ]
