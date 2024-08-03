@@ -22,39 +22,12 @@
     {% if request.user.is_authenticated and items %}
     <section class="md:grid grid-cols-6 md:gap-7 space-y-10 md:space-y-0 mt-6">
       <aside class="md:col-span-2">
-        <div
-          class="px-3 py-5 lg:p-5 bg-light dark:bg-primary-dark transition rounded-xl space-y-3 mb-4"
-        >
-          <div class="border-b pb-1.5 flex justify-between">
-            <p class="text-gray dark:text-light">Subtotal</p>
-            <p class="text-gray-dark dark:text-light">
-              ${{ pricing.sub_total }}
-            </p>
-          </div>
-          <div class="border-b pb-1.5 flex justify-between">
-            <p class="text-gray dark:text-light">Shipping</p>
-            <p class="text-gray-dark dark:text-light">
-              ${{ pricing.shipping }}
-            </p>
-          </div>
-          <div class="border-b pb-1.5 flex justify-between">
-            <p class="text-gray dark:text-light">Tax</p>
-            <p class="text-gray-dark dark:text-light">${{ pricing.tax }}</p>
-          </div>
 
-          <div class="flex justify-between">
-            <p class="w-full text-gray text-lg font-medium dark:text-light">
-              Order Total
-            </p>
-            <p class="text-gray-dark dark:text-light">
-              ${{ pricing.order_total }}
-            </p>
-          </div>
-        </div>
+        {% include 'components/pricing-detail.html' %}
 
-        <RouterLink to="/checkout">
+        <a href="{% url 'core:checkout' %}">
           <button class="btn-primary w-full">Proceed to Checkout</button>
-        </RouterLink>
+        </a>
       </aside>
 
       <div class="flex flex-wrap md:flex-col gap-6 md:col-span-4">

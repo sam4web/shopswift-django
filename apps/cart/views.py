@@ -18,7 +18,6 @@ def cart_view(request):
         context = {"pricing": pricing, "items": cart.products.all()}
     except:
         context = {}
-
     return render(request, "core/cart.html", context)
 
 

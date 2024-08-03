@@ -82,7 +82,7 @@
           <li>
             <a
               class="nav-link {% if url_name == 'checkout' %}nav-link__active{% endif %}"
-              href="#"
+              href="{% url 'core:checkout' %}"
             >
               checkout
             </a>
@@ -202,7 +202,7 @@
         <li>
           <a
             class="nav-link {% if url_name == 'checkout' %}nav-link__active{% endif %}"
-            href="#"
+            href="{% url 'core:checkout' %}"
           >
             checkout
           </a>
