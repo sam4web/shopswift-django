@@ -88,7 +88,9 @@
               >
                 <button class="btn-secondary px-3 py-1.5">Detail</button>
               </a>
-              <a href="#" class="inline-block">
+              <a
+                href="{% url 'product:edit' product.id %}"
+                class="inline-block">
                 <button
                   class="btn bg-emerald-500 border-emerald-500 px-3 py-1.5"
                 >

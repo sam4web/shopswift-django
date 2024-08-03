@@ -38,5 +38,24 @@ def create_view(request):
 @login_required
 def delete_view(request, product_id):
     product = get_object_or_404(Product, id=product_id)
-    product.delete()
+    if product.created_by == request.user:
+        product.delete()
     return redirect("product:list")
+
+
+@login_required
+def edit_view(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    if product.created_by != request.user:
+        return redirect("product:list")
+
+    if request.method == "POST":
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            product.save()
+            return redirect("product:list")
+    else:
+        form = ProductForm(instance=product)
+
+    context = {"form": form}
+    return render(request, "product/update.html", context)

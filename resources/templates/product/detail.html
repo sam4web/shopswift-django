@@ -18,7 +18,7 @@
         >
           {{ product.name }}
         </h3>
-        <p class="text-lg lg:text-xl text-secondary-dark dark:text-light">
+        <p class="text-lg text-secondary-dark dark:text-light">
           ${{ product.price }}
         </p>
       </div>
@@ -31,7 +31,7 @@
 
       {% if request.user == product.created_by %}
       <div class="space-x-2">
-        <a href="#">
+        <a href="{% url 'product:edit' product.id %}">
           <button
             class="btn bg-emerald-500 border-emerald-500 py-2 font-medium"
           >

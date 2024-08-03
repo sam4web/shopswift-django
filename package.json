@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "watch": "tailwindcss -i ./static/styles/main.css -o ./static/styles/main.min.css --watch"
+    "watch": "tailwindcss -i ./resources/static/styles/main.css -o ./resources/static/styles/main.min.css --watch"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.7"
