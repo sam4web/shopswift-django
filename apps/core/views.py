@@ -42,3 +42,14 @@ def checkout_view(request):
     context = {"pricing": pricing, "items": items}
 
     return render(request, "core/checkout.html", context)
+
+
+@login_required
+def orders_view(request):
+    try:
+        orders = Order.objects.filter(customer=request.user).order_by("-created_at")
+    except Exception as e:
+        print(e)
+        return redirect("cart:cart")
+    context = {"orders": orders}
+    return render(request, "core/order.html", context)

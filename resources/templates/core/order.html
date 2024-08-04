@@ -1,0 +1,63 @@
+{% extends 'layout/main.layout.html' %} 
+{% load static %} 
+
+{% block title %} Orders | ShopSwift {% endblock title %} 
+
+{% block main %}
+<section>
+  <div class="wrapper">
+    <section class="flex justify-between">
+      <h3
+        class="text-2xl lg:text-3xl dark:text-light text-gray font-medium transition"
+      >
+        {% if request.user.is_authenticated and orders %}
+        <span> Your orders </span>
+        {% else %}
+        <span> No orders </span>
+        {% endif %}
+      </h3>
+      {% if request.user.is_authenticated and orders %}
+      <p class="text-lg text-gray dark:text-light">
+        Total orders: {{ orders|length }}
+      </p>
+      {% endif %}
+    </section>
+    <hr class="line-break" />
+
+    {% if request.user.is_authenticated and orders %}
+    <section>
+      <div class="relative overflow-x-auto rounded-lg">
+        <table
+          class="w-full text-base text-left text-gray-500 dark:text-gray-400"
+        >
+          <thead
+            class="text-base text-gray bg-gray-50 dark:text-light dark:bg-primary-dark transition"
+          >
+            <tr>
+              <th scope="col" class="px-6 py-4 font-medium">Name</th>
+              <th scope="col" class="px-6 py-4 font-medium">Address</th>
+              <th scope="col" class="px-6 py-4 font-medium">Products</th>
+              <th scope="col" class="px-6 py-4 font-medium">Cost</th>
+              <th scope="col" class="px-6 py-4 font-medium">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for order in orders %}
+            <tr
+              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 transition"
+            >
+              <td class="px-6 py-4">{{ order.name }}</td>
+              <td class="px-6 py-4">{{ order.address }}</td>
+              <td class="px-6 py-4">{{ order.products.count }}</td>
+              <td class="px-6 py-4">{{ order.cost }}</td>
+              <td class="px-6 py-4">{{ order.created_at|date:"M d, Y" }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    {% endif %}
+  </div>
+</section>
+{% endblock main %}

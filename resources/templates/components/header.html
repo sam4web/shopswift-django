@@ -90,7 +90,7 @@
           <li>
             <a
               class="nav-link {% if url_name == 'orders' %}nav-link__active{% endif %}"
-              href="#"
+              href="{% url 'core:orders' %}"
             >
               orders
             </a>
@@ -210,7 +210,7 @@
         <li>
           <a
             class="nav-link {% if url_name == 'orders' %}nav-link__active{% endif %}"
-            href="#"
+            href="{% url 'core:orders' %}"
           >
             orders
           </a>
