@@ -8,8 +8,6 @@ env/
 
 node_modules/
 
-migrations
-
 # Editor directories and files
 .vscode/
 .idea
